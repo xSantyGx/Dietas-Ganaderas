@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<form action="/dietaAgregar" method="POST" class="container mt-3">
+    <div class="card border border-primary rounded-3 shadow-sm p-3">
+      <div class="row g-3">
+        <div class="col-md-12">
+          <label for="cod_dieta" class="form-label mt-4">Codigo de la dieta</label>
+          <input type="number" class="form-control" name="cod_dieta" placeholder="cod_dieta" required>
+        </div>
+        <div class="col-md-12">
+          <label for="finalidad" class="form-label mt-4">Finalidad de la dieta</label>
+          <input type="text" class="form-control" name="finalidad" placeholder="finalidad" required>
+        </div>
+        <div class="col-md-12">
+          <label for="od_dieta" class="form-label mt-4">OD dieta</label>
+          <input type="text" class="form-control" name="od_dieta" placeholder="od_dieta" >
+        <div class="col-12 mt-3">
+          <button type="submit" class="btn btn-primary float-end">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-dismissible alert-primary">
+    {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<div style="margin-left: 10px; margin-top: 20px; margin-right: 10px;">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr class="table-primary">
+                <th scope="col">Nombre Alimento</th>
+                <th scope="col">Tipo Alimento</th>
+                <th scope="col">Magnitud Alimento</th>
+                <th scope="col">Coste Alimento</th>
+                <th scope="col">OD Alimento</th>
+                <td>
+                    <a href="/alimentoInsertar" class="btn btn-primary btn-sm">Agregar</a>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for alimento in alimentos %} 
+            <tr class="table-secondary">
+                <td>{{alimento.0}}</td>
+                <td>{{alimento.1}}</td>
+                <td>{{alimento.2}}</td>
+                <td>{{alimento.3}}</td>
+                <td>{{alimento.4}}</td>
+                <td>
+                    <a href="/alimentoEditar/{{alimento.0}}" class="btn btn-outline-primary btn-sm">Editar</a>
+                    <a href="/alimentoEliminar/{{alimento.0}}" class="btn btn-outline-primary btn-sm btn-delete">Eliminar</a>
+                </td>
+            {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

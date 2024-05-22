@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<form action="/alimento_dieta_tomaAgregar" method="POST" class="container mt-3">
+    <div class="card border border-primary rounded-3 shadow-sm p-3">
+      <div class="row g-3">
+        <div class="col-md-12">
+          <label for="cod_dieta" class="form-label mt-4">Código de dieta</label>
+          <select class="form-select" name="cod_dieta">
+            {% for codD in codigos_dietas %}
+            <option>{{ codD }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-12">
+          <label for="nombre_alimento" class="form-label mt-4">Nombre del alimento</label>
+          <select class="form-select" name="nombre_alimento">
+            {% for nom in nombres_alimentos %}
+            <option>{{ nom }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-12">
+          <label for="cod_toma" class="form-label mt-4">Codigo del toma</label>
+          <select class="form-select" name="cod_toma">
+            {% for codT in codigos_tomas %}
+            <option>{{ codT }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-12">
+          <label for="cantidad_toma" class="form-label mt-4">Cantidad Toma</label>
+          <input type="decimal" class="form-control" name="cantidad_toma" placeholder="cantidad_toma" required>
+        </div>
+        <div class="col-md-12">
+          <button type="submit" class="btn btn-primary float-end">Guardar</button>
+      </div>
+      </div>
+    </div>
+  </form>
+  
+{% endblock %}

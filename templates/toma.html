@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-dismissible alert-primary">
+    {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<div style="margin-left: 10px; margin-top: 20px; margin-right: 10px;">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr class="table-primary">
+                <th scope="col">Codigo Toma</th>
+                <th scope="col">Nombre Toma</th>
+                <th scope="col">Hora Inicio</th>
+                <th scope="col">Hora Fin</th>
+                <th scope="col">OD Toma</th>
+                <td>
+                    <a href="/tomaInsertar" class="btn btn-primary btn-sm">Agregar</a>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for toma in tomas %} 
+            <tr class="table-secondary">
+                <td>{{toma.0}}</td>
+                <td>{{toma.1}}</td>
+                <td>{{toma.2}}</td>
+                <td>{{toma.3}}</td>
+                <td>{{toma.4}}</td>
+                <td>
+                    <a href="/tomaEditar/{{toma.0}}" class="btn btn-outline-primary btn-sm">Editar</a>
+                    <a href="/tomaEliminar/{{toma.0}}" class="btn btn-outline-primary btn-sm btn-delete">Eliminar</a>
+                </td>
+            {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

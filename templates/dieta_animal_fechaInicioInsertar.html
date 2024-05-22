@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<form action="/dieta_animal_fechaInicioAgregar" method="POST" class="container mt-3">
+    <div class="card border border-primary rounded-3 shadow-sm p-3">
+      <div class="row g-3">
+        <div class="col-md-12">
+          <label for="cod_animal " class="form-label mt-4">Codigo del animal</label>
+          <select class="form-select" name="cod_animal">
+            {% for codAni in codigos_animales %}
+            <option>{{ codAni }}</option>
+            {% endfor %}
+          </select>
+        </div>
+          <div class="col-md-12">
+            <label for="fecha_inicio" class="form-label mt-4">Fecha de inicio</label>
+            <input type="date" class="form-control" name="fecha_inicio" placeholder="fecha_inicio" required>
+          </div>
+        <div class="col-md-12">
+          <label for="cod_dieta " class="form-label mt-4">Codigo de dieta</label>
+          <select class="form-select" name="cod_dieta">
+            {% for codDie in codigos_dietas %}
+            <option>{{ codDie }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-12">
+          <label for="od_resultado" class="form-label mt-4">OD resultado</label>
+          <input type="text" class="form-control" name="od_resultado" placeholder="od_resultado">
+        </div>
+        <div class="col-md-12">
+          <button type="submit" class="btn btn-primary float-end">Guardar</button>
+      </div>
+      </div>
+    </div>
+  </form>
+  
+{% endblock %}

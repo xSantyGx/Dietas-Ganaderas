@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="container" style="margin-top: 40px;">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card border-primary mb-3">
+        <div class="card-header bg-primary text-white">Tablas</div>
+        <div class="card-body">
+          <p class="card-text">Selecciona una tabla para gestionar su información.</p>
+          <a href="/inicio" class="btn btn-outline-primary">Ir a Tablas</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card border-secondary mb-3">
+        <div class="card-header bg-secondary text-white">Reportes</div>
+        <div class="card-body">
+          <p class="card-text">Accede a los reportes generados por la aplicación.</p>
+          <a href="/reportes" class="btn btn-outline-secondary">Ir a Reportes</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

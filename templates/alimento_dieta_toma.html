@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-dismissible alert-primary">
+    {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<div style="margin-left: 10px; margin-top: 20px; margin-right: 10px;">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr class="table-primary">
+                <th scope="col">Codigo Dieta</th>
+                <th scope="col">Nombre Alimento</th>
+                <th scope="col">Codigo Toma</th>
+                <th scope="col">Cantidad Toma</th>
+                <td>
+                    <a href="/alimento_dieta_tomaInsertar" class="btn btn-primary btn-sm">Agregar</a>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for alimento_dieta_toma in alimento_dieta_tomas %} 
+            <tr class="table-secondary">
+                <td>{{alimento_dieta_toma.0}}</td>
+                <td>{{alimento_dieta_toma.1}}</td>
+                <td>{{alimento_dieta_toma.2}}</td>
+                <td>{{alimento_dieta_toma.3}}</td>
+                <td>
+                    <a href="/alimento_dieta_tomaEditar/{{alimento_dieta_toma.0}}/{{alimento_dieta_toma.1}}/{{alimento_dieta_toma.2}}" class="btn btn-outline-primary btn-sm">Editar</a>
+                    <a href="/alimento_dieta_tomaEliminar/{{alimento_dieta_toma.0}}/{{alimento_dieta_toma.1}}/{{alimento_dieta_toma.2}}" class="btn btn-outline-primary btn-sm btn-delete">Eliminar</a>
+                </td>
+            {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

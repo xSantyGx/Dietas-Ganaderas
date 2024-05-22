@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-dismissible alert-primary">
+    {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<div style="margin-left: 10px; margin-top: 20px; margin-right: 10px;">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr class="table-primary">
+                <th scope="col">Codigo Dieta</th>
+                <th scope="col">Finalidad</th>
+                <th scope="col">OD Dieta</th>
+                <td>
+                    <a href="/dietaInsertar" class="btn btn-primary btn-sm">Agregar</a>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dieta in dietas %} 
+            <tr class="table-secondary">
+                <td>{{dieta.0}}</td>
+                <td>{{dieta.1}}</td>
+                <td>{{dieta.2}}</td>
+                <td>
+                    <a href="/dietaEditar/{{dieta.0}}" class="btn btn-outline-primary btn-sm">Editar</a>
+                    <a href="/dietaEliminar/{{dieta.0}}" class="btn btn-outline-primary btn-sm btn-delete">Eliminar</a>
+                </td>
+            {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

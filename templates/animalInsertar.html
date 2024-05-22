@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<form action="/animalAgregar" method="POST" class="container mt-3">
+    <div class="card border border-primary rounded-3 shadow-sm p-3">
+      <div class="row g-3">
+        <div class="col-md-12">
+          <label for="cod_animal" class="form-label mt-4">Código del animal</label>
+          <input type="text" class="form-control" name="cod_animal" placeholder="cod_animal" required>
+        </div>
+        <div class="col-md-12">
+          <label for="tipo_animal" class="form-label mt-4">Tipo del animal</label>
+          <input type="text" class="form-control" name="tipo_animal" placeholder="tipo_animal" required>
+        </div>
+        <div class="col-md-4">
+          <label for="peso" class="form-label mt-4">Peso del animal</label>
+          <input type="number" class="form-control" name="peso" placeholder="peso" required>
+        </div>
+        <div class="col-md-4">
+          <label for="ano_nacimiento" class="form-label mt-4">Año de nacimiento</label>
+          <input type="number" class="form-control" name="ano_nacimiento" placeholder="ano_nacimiento" required>
+        </div>
+        <div class="col-md-12">
+          <label for="utilidad_animal" class="form-label mt-4">Utilidad del animal</label>
+          <input type="text" class="form-control" name="utilidad_animal" placeholder="utilidad_animal" required>
+        </div>
+        <div class="col-md-12">
+          <label for="produccion_animal" class="form-label mt-4">Producción del animal</label>
+          <input type="text" class="form-control" name="produccion_animal" placeholder="produccion_animal" required>
+        </div>
+        <div class="col-md-12">
+          <label for="od_animal" class="form-label mt-4">OD Animal</label>
+          <input type="number" class="form-control" name="od_animal" placeholder="od_animal">
+        </div>
+        <div class="col-12 mt-3">
+          <button type="submit" class="btn btn-primary float-end">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  
+{% endblock %}

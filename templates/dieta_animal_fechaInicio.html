@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-dismissible alert-primary">
+    {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<div style="margin-left: 10px; margin-top: 20px; margin-right: 10px;">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr class="table-primary">
+                <th scope="col">Codigo Animal</th>
+                <th scope="col">Fecha Inicio</th>
+                <th scope="col">Codigo dieta</th>
+                <th scope="col">OD resultado</th>
+                <td>
+                    <a href="/dieta_animal_fechaInicioInsertar" class="btn btn-primary btn-sm">Agregar</a>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dieta_animal_fechaInicio in dieta_animal_fechaInicios %} 
+            <tr class="table-secondary">
+                <td>{{dieta_animal_fechaInicio.0}}</td>
+                <td>{{dieta_animal_fechaInicio.1}}</td>
+                <td>{{dieta_animal_fechaInicio.2}}</td>
+                <td>{{dieta_animal_fechaInicio.3}}</td>
+                <td>
+                    <a href="/dieta_animal_fechaInicioEditar/{{dieta_animal_fechaInicio.0}}/{{dieta_animal_fechaInicio.1}}" class="btn btn-outline-primary btn-sm">Editar</a>
+                    <a href="/dieta_animal_fechaInicioEliminar/{{dieta_animal_fechaInicio.0}}/{{dieta_animal_fechaInicio.1}}" class="btn btn-outline-primary btn-sm btn-delete">Eliminar</a>
+                </td>
+            {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

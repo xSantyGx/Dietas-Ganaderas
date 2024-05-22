@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-dismissible alert-primary">
+    {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<div style="margin-left: 10px; margin-top: 20px; margin-right: 10px;">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr class="table-primary">
+                <th scope="col">Nombre Nutriente</th>
+                <th scope="col">Magnitud Nutriente</th>
+                <th scope="col">Estado</th>
+                <th scope="col">OD Nutriente</th>
+                <td>
+                    <a href="/nutrienteInsertar" class="btn btn-primary btn-sm">Agregar</a>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for nutriente in nutrientes %} 
+            <tr class="table-secondary">
+                <td>{{nutriente.0}}</td>
+                <td>{{nutriente.1}}</td>
+                <td>{{nutriente.2}}</td>
+                <td>{{nutriente.3}}</td>
+                <td>
+                    <a href="/nutrienteEditar/{{nutriente.0}}" class="btn btn-outline-primary btn-sm">Editar</a>
+                    <a href="/nutrienteEliminar/{{nutriente.0}}" class="btn btn-outline-primary btn-sm btn-delete">Eliminar</a>
+                </td>
+            {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

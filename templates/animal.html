@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-dismissible alert-primary">
+    {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<div style="margin-left: 10px; margin-top: 20px; margin-right: 10px;">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr class="table-primary">
+                <th scope="col">Codigo Animal</th>
+                <th scope="col">Tipo Animal</th>
+                <th scope="col">Peso</th>
+                <th scope="col">Año de nacimiento</th>
+                <th scope="col">Utilidad Animal</th>
+                <th scope="col">Produccion Animal</th>
+                <th scope="col">OD Animal</th>
+                <td>
+                    <a href="/animalInsertar" class="btn btn-primary btn-sm">Agregar</a>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for animal in animales %} 
+            <tr class="table-secondary">
+                <td>{{animal.0}}</td>
+                <td>{{animal.1}}</td>
+                <td>{{animal.2}}</td>
+                <td>{{animal.3}}</td>
+                <td>{{animal.4}}</td>
+                <td>{{animal.5}}</td>
+                <td>{{animal.6}}</td>
+                <td>
+                    <a href="/animalEditar/{{animal.0}}" class="btn btn-outline-primary btn-sm">Editar</a>
+                    <a href="/animalEliminar/{{animal.0}}" class="btn btn-outline-primary btn-sm btn-delete">Eliminar</a>
+                </td>
+            {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

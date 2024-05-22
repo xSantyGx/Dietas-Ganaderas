@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<form action="/animal_nutrienteActualizar/{{animal_nutriente.0}}" method="POST" class="container mt-3">
+  <div class="card border border-primary rounded-3 shadow-sm p-3">
+      <div class="row g-3">
+          <div class="col-md-12">
+            <label for="cod_animal" class="form-label mt-4">Código del animal</label>
+            <input class="form-control" name="cod_animal" value="{{animal_nutriente.0}}" readonly>
+          </div>
+          <div class="col-md-12">
+            <label for="nombre_nutriente" class="form-label mt-4">Nombre del nutriente</label>
+            <input class="form-control" name="nombre_nutriente" value="{{animal_nutriente.1}}" readonly>
+          </div>
+          <div class="col-md-12">
+            <label for="cantidad_necesitada" class="form-label mt-4">Cantidad Necesitada</label>
+            <input type="number" class="form-control" name="cantidad_necesitada" placeholder="Cantidad Necesitada" value="{{animal_nutriente.2}}" required>
+          </div>
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-primary float-end">Guardar</button>
+          </div>
+      </div>
+  </div>
+</form>
+  
+{% endblock %}
