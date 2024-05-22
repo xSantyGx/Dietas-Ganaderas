@@ -13,7 +13,7 @@ from dieta_animal_fechaInicio import die_ani_fec
 from reportes import rep
 from baseDatos import mysql
 
-app = Flask(__name__)
+app = Flask(__name__) 
 app.config.from_object(Config)
 app.register_blueprint(appD)
 app.register_blueprint(ani)
