@@ -1,0 +1,77 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+    transition: all 0.6s ease;
+}
+
+.left {
+    left: 0;
+    background: url('https://www.fundelt.com/excelencia-liderazgo-transformacion/wp-content/uploads/2022/11/Fundelt-134-Estadisticas-800x445.png') no-repeat center center/cover; 
+}
+
+.right {
+    right: 0;
+    background: url('https://taxonomiaanimal.wordpress.com/wp-content/uploads/2018/03/vaca.png?w=660') no-repeat center center/cover; 
+}
+
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+
+i {
+    color: rgb(0, 0, 0);
+    margin-bottom: 10px;
+}
+
+
+h2 {
+    color: rgb(0, 0, 0);
+    font-size: 1.5em;
+}
+
+p {
+    color: rgb(0, 0, 0);
+}
+
+
+.btn {
+    border: none;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin: 5px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.left .btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.right .btn {
+    background-color: #007bff;
+    color: white;
+}
+
+
