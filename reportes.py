@@ -27,7 +27,7 @@ def reporte3():
 @rep.route('/reporte_4')
 def reporte4():
     cur = mysql.connection.cursor()
-    cur.execute('SELECT a.cod_animal, a.tipo_animal, an.cantidad_necesitada FROM Animal a INNER JOIN Animal_Nutriente an ON a.cod_animal = an.cod_animal WHERE an.nombre_nutriente = "Riboflavina"')
+    cur.execute('SELECT DISTINCT Animal.cod_animal, Animal.tipo_animal FROM Animal INNER JOIN Animal_Nutriente ON Animal.cod_animal = Animal_Nutriente.cod_animal WHERE Animal.tipo_animal = TIPO_ANIMAL AND Animal_Nutriente.nombre_nutriente NOT IN (SELECT nombre_nutriente FROM Nutriente_Alimento WHERE nombre_alimento = NOMBRE_ALIMENTO);')
     data= cur.fetchall()
     return render_template('reporte_4.html', animales = data)
 
@@ -41,21 +41,22 @@ def reporte5():
 @rep.route('/reporte_6')
 def reporte6():
     cur = mysql.connection.cursor()
-    cur.execute('SELECT a.cod_animal, a.tipo_animal, an.cantidad_necesitada FROM Animal a INNER JOIN Animal_Nutriente an ON a.cod_animal = an.cod_animal WHERE an.nombre_nutriente = "Riboflavina"')
+    cur.execute('SELECT NOMBRE_ALIMENTO AS "Alimentos con los dos Nutrientes" FROM Nutriente_Alimento WHERE nombre_nutriente IN (NOMBRE_NUTRIENTE)')
     data= cur.fetchall()
     return render_template('reporte_6.html', animales = data)
 
 @rep.route('/reporte_7')
 def reporte7():
     cur = mysql.connection.cursor()
-    cur.execute('SELECT a.cod_animal, a.tipo_animal, an.cantidad_necesitada FROM Animal a INNER JOIN Animal_Nutriente an ON a.cod_animal = an.cod_animal WHERE an.nombre_nutriente = "Riboflavina"')
+    #cur.execute('SELECT d.cod_animal AS "Corderos de peso" FROM Dieta_Animal_FechaInicio d INNER JOIN Animal an ON d.cod_animal = an.cod_animal WHERE d.cod_dieta = d.COD_DIETA AND d.fecha_inicio > FECHA_INICIO AND an.tipo_animal TIPO_ANIMAL AND an.ano_nacimiento = ANO_NACIMIENTO AND an.peso BETWEEN PESO_MINIMO AND PESO_MAXIMO;')
+    cur.execute('SELECT cod_animal AS "Corderos flatos de peso" FROM Dieta_Animal_FechaInicio WHERE cod_dieta = cod_dieta AND fecha_inicio > STR_TO_DATE("01/01/1999", "DD/MM/YYYY") AND cod_animal IN (SELECT cod_animal FROM Animal WHERE tipo_animal = \'Cordero\' AND ano_nacimiento = 1999 AND peso BETWEEN 30 AND 35)')
     data= cur.fetchall()
     return render_template('reporte_7.html', animales = data)
 
 @rep.route('/reporte_8')
 def reporte8():
     cur = mysql.connection.cursor()
-    cur.execute('SELECT a.cod_animal, a.tipo_animal, an.cantidad_necesitada FROM Animal a INNER JOIN Animal_Nutriente an ON a.cod_animal = an.cod_animal WHERE an.nombre_nutriente = "Riboflavina"')
+    cur.execute('SELECT ROUND(AVG(peso), 2) AS "Peso promedio" FROM Animal WHERE tipo_animal = TIPO_ANIMAL;')
     data= cur.fetchall()
     return render_template('reporte_8.html', animales = data)
 
